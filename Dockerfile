@@ -13,11 +13,9 @@ RUN set -x \
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV SPARK_HOME=/opt/spark
 
+RUN cp $SPARK_HOME/conf/spark-defaults.conf.template $SPARK_HOME/conf/spark-defaults.conf
 RUN curl -fSL http://central.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.3/hadoop-aws-2.7.3.jar -o $SPARK_HOME/jars/hadoop-aws-2.7.3.jar \
     && curl -fSL http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar -o $SPARK_HOME/jars/aws-java-sdk-1.7.4.jar
-
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod a+x /entrypoint.sh
 
 WORKDIR /opt/spark
 
