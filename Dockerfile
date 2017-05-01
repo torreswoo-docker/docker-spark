@@ -10,7 +10,6 @@ RUN set -x \
     && rm /tmp/spark.tgz \
     && mv /opt/spark-$SPARK_VERSION-bin-hadoop2.7 /opt/spark
 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV SPARK_HOME=/opt/spark
 
 RUN cp $SPARK_HOME/conf/spark-defaults.conf.template $SPARK_HOME/conf/spark-defaults.conf
