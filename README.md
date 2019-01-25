@@ -28,5 +28,7 @@ $ docker-compose -f docker-compose-local.yml up
 
 04. Run pyspark container in hadoop network
 ```
-$ docker run -it --network hadoop --env-file hadoop.env sangwonl/hadoop-spark:2.1.0 ./bin/pyspark --master yarn
+$ docker build -t hadoop-spark:2.1.0 .
+$ docker run -it --network hadoop --env-file hadoop.env -p 4040:4040 hadoop-spark:2.1.0 ./bin/pyspark --master yarn
+
 ```
